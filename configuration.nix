@@ -7,7 +7,6 @@
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
       #./hyprland.nix
     ];
 
@@ -88,6 +87,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     alacritty
+    discord
     #  thunderbird
     ];
   };
