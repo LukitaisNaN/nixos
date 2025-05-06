@@ -87,14 +87,20 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
     alacritty
+    btop
     discord
+    zulip
     #  thunderbird
     ];
   };
 
+  # Install fonts
+  fonts.packages = with pkgs; [
+    _0xproto;
+  ];
+
   # Install firefox.
   programs.firefox.enable = true;
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
