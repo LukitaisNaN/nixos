@@ -62,7 +62,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -89,14 +89,16 @@
     alacritty
     btop
     discord
+    krita
+    simplescreenrecorder
+    todoist
     zulip
-    #  thunderbird
     ];
   };
 
-  # Install fonts
+  # Fonts
   fonts.packages = with pkgs; [
-    _0xproto;
+    pkgs.nerd-fonts._0xproto
   ];
 
   # Install firefox.
@@ -108,13 +110,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    vim nodejs_22 # For coc vim
+    localsend
+    vim 
+    nodejs_22 # For coc vim
     wget
     git
-  ];
-
-  fonts.packages = with pkgs; [
-    _0xproto
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
