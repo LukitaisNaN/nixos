@@ -86,13 +86,24 @@
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-    alacritty
-    btop
-    discord
-    krita
-    simplescreenrecorder
-    todoist
-    zulip
+      alacritty
+      bat
+      btop
+      discord
+      krita
+      simplescreenrecorder
+      todoist
+      whatsapp-for-linux
+      zulip
+    ];
+  };
+
+  users.users.andreita = {
+    isNormalUser = true;
+    description = "Andre";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      btop
     ];
   };
 
