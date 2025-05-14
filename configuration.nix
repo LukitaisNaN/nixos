@@ -42,6 +42,9 @@
     LC_TIME = "es_AR.UTF-8";
   };
 
+  # Enable Flakes and Experimental features
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Enable the X11 windowing system.
   services.xserver.enable = true;
 
@@ -80,17 +83,23 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lukita = {
     isNormalUser = true;
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
+
     packages = with pkgs; [
       alacritty
       bat
       btop
       discord
+      # unstable.jdk24_headless
       krita
+      obsidian
       simplescreenrecorder
       todoist
       whatsapp-for-linux
@@ -107,25 +116,27 @@
     ];
   };
 
-  # Fonts
-  fonts.packages = with pkgs; [
-    pkgs.nerd-fonts._0xproto
-  ];
-
   # Install firefox.
   programs.firefox.enable = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     localsend
-    vim 
     nodejs_22 # For coc vim
-    wget
     git
+    tmux
+    vim-full 
+    wget
+    wemux
+  ];
+
+  
+
+  # Fonts
+  fonts.packages = with pkgs; [
+    pkgs.nerd-fonts._0xproto
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -139,7 +150,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
