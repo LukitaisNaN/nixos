@@ -1,11 +1,12 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
 
   environment.systemPackages = with pkgs; [
-    brigthnessctl playerctl # key ctrls
+    brightnessctl
+    playerctl # key ctrls
     hyprshot
-    wl-copy
+    wl-clipboard
     grim slurp
   ];
 

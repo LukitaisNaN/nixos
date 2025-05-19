@@ -91,17 +91,15 @@
     isNormalUser = true;
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
-
     packages = with pkgs; [
       alacritty
       bat
       btop
       discord
-      # unstable.jdk24_headless
       krita
       obsidian
       simplescreenrecorder
-      todoist
+      tmux
       whatsapp-for-linux
       zulip
     ];
@@ -119,25 +117,31 @@
   # Install firefox.
   programs.firefox.enable = true;
 
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     localsend
-    nodejs_22 # For coc vim
     git
-    tmux
     vim-full 
     wget
     wemux
   ];
 
-  
-
   # Fonts
   fonts.packages = with pkgs; [
-    pkgs.nerd-fonts._0xproto
+    nerd-fonts._0xproto
+    noto-fonts-emoji
+    nerd-fonts.hurmit
   ];
+
+  # xdg-portal for flatpak aplications
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk 
+      pkgs.xdg-desktop-portal-hyprland
+    ];
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -150,7 +154,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  #services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
