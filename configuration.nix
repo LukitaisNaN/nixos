@@ -100,7 +100,7 @@
       obsidian
       simplescreenrecorder
       tmux
-      whatsapp-for-linux
+      zapzap
       zulip
     ];
   };
