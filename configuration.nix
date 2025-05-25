@@ -93,13 +93,18 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       alacritty
+      ant
       bat
       btop
+      diff-so-fancy
       discord
+      jdk24
       krita
       obsidian
       simplescreenrecorder
+      spark
       tmux
+      tree
       zapzap
       zulip
     ];
@@ -116,6 +121,22 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  # Hyprland
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true
+
+  };
+
+  enviorment.sessionVariables {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
+
+  hardware = {
+    opengl.enable = true
+  };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

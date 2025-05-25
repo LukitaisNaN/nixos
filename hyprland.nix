@@ -8,6 +8,6 @@
     hyprshot
     wl-clipboard
     grim slurp
-  ];
+ ];
 
 }
