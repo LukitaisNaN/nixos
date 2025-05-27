@@ -4,10 +4,15 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
-    playerctl # key ctrls
+    grim
+    hyprprop
     hyprshot
+    nwg-look
+    playerctl # key ctrls
+    slurp
+    waybar
     wl-clipboard
-    grim slurp
- ];
+    wofi
 
+ ];
 }

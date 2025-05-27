@@ -2,13 +2,22 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      #./hyprland.nix
-    ];
+
+  imports = [
+    ./hardware-configuration.nix
+    ./hyprland.nix
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    users = {
+      lukita = import ./home.nix;
+    };
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -45,24 +54,11 @@
   # Enable Flakes and Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "latam";
-    variant = "";
-  };
-
   # Configure console keymap
   console.keyMap = "la-latin1";
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
@@ -98,6 +94,7 @@
       btop
       diff-so-fancy
       discord
+      home-manager
       jdk24
       krita
       obsidian
@@ -125,17 +122,18 @@
   # Hyprland
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true
-
+    xwayland.enable = true;
+    withUWSM = true;
   };
 
-  enviorment.sessionVariables {
+  environment.sessionVariables = {
     # Hint electron apps to use wayland
     NIXOS_OZONE_WL = "1";
   };
 
-  hardware = {
-    opengl.enable = true
+  # Accelerated video playback (idk what it is, but sounds useful)
+  hardware.graphics = {
+    enable = true;
   };
 
   # List packages installed in system profile. To search, run:
@@ -155,7 +153,7 @@
     nerd-fonts.hurmit
   ];
 
-  # xdg-portal for flatpak aplications
+  # xdg-portal for gtk aplications and screen-sharing
   xdg.portal = {
     enable = true;
     extraPortals = [
