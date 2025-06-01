@@ -4,6 +4,7 @@
 
   environment.systemPackages = with pkgs; [
     brightnessctl
+    dunst
     grim
     hyprprop
     hyprshot
