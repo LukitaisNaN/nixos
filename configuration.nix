@@ -90,15 +90,19 @@
     packages = with pkgs; [
       ant
       bat
+      blender
       btop
       diff-so-fancy
       discord
+			godot
       home-manager
-      jdk24
+      jdk11
       krita
       obsidian
+      obs-studio
+      protonplus
       simplescreenrecorder
-      spark
+      # spark
       tmux
       tree
       zapzap
@@ -139,12 +143,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty
+    dolphin
     localsend
     git
     pavucontrol
     vim-full 
+    qalculate-qt
     wget
     wemux
+    unzip
   ];
 
   # Fonts
