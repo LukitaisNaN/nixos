@@ -9,6 +9,8 @@
   imports = [
     ./hardware-configuration.nix
     ./hyprland.nix
+    ./steam.nix
+    ./vim.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -70,7 +72,6 @@
     pulse.enable = true;
     # If you want to use JACK applications, uncomment this
     #jack.enable = true;
-
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
@@ -88,23 +89,15 @@
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      ant
       bat
       blender
       btop
-      diff-so-fancy
       discord
-			godot
+      godot3
       home-manager
-      jdk11
       krita
       obsidian
       obs-studio
-      protonplus
-      simplescreenrecorder
-      # spark
-      tmux
-      tree
       zapzap
       zulip
     ];
@@ -143,14 +136,15 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty
-    dolphin
+    kdePackages.dolphin
+    libreoffice
     localsend
     git
     pavucontrol
     vim-full 
+    vlc
     qalculate-qt
     wget
-    wemux
     unzip
   ];
 
