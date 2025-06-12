@@ -1,5 +1,10 @@
 {inputs, config, pkgs}:
 
+{
+
+environment.systemPackages = with pkgs; [
+   protonplus
+];
 
 programs.steam = {
   enable = true;
@@ -8,3 +13,4 @@ programs.steam = {
   localNetworkGameTransfers.openFirewall = true; # Open ports in the firewall for Steam Local Network Game Transfers
 };
 
+}
