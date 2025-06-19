@@ -27,6 +27,11 @@
 
           modules = [
             ./configuration.nix
+
+            ./hardware-configuration.nix
+            ./hyprland.nix
+            ./steam.nix
+            ./vim.nix
           ];
         };
       };
