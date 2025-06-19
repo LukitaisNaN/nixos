@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, config, pkgs, ... }:
 
 {
@@ -17,21 +13,21 @@
     };
   };
 
-  # Bootloader.
+  # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
 
-  # Deactivate wpa_supplicant
-  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
+  # Enable networkmanager
+  networking.networkmanager.enable = true;
+
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networkmanager
-  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
@@ -93,21 +89,7 @@
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      aseprite              # Sprite drawing app
-      bat                   # Better cat
-      bitwig-studio         # DAW
-      blender               # 3D modeler
-      btop                  # Better top
-      discord
-      godot3
-      godot
       home-manager
-      krita                 # General drawing app
-      obsidian
-      obs-studio            # Screen recorder
-      waydroid              # Android emulator
-      zapzap                # Whatsapp
-      zulip                 # Organization comms
     ];
   };
 
@@ -144,6 +126,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty               # Terminal emulator
+    discord
     kdePackages.dolphin     # File explorer
     libreoffice             # Word
     localsend

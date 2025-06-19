@@ -26,11 +26,12 @@
           specialArgs = { inherit inputs system; };
 
           modules = [
+            ./artist.nix
             ./configuration.nix
-
             ./hardware-configuration.nix
             ./hyprland.nix
             ./steam.nix
+            ./tools.nix
             ./vim.nix
           ];
         };
