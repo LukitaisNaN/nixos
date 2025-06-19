@@ -7,10 +7,6 @@
 {
 
   imports = [
-    ./hardware-configuration.nix
-    ./hyprland.nix
-    ./steam.nix
-    ./vim.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -26,13 +22,15 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Deactivate wpa_supplicant
+  networking.wireless.enable = false;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Enable networking
+  # Enable networkmanager
   networking.networkmanager.enable = true;
 
   # Set your time zone.
@@ -77,11 +75,17 @@
     #media-session.enable = true;
   };
 
+  # Bluetooth
+  hardware.bluetooth.enable = true; 
+  hardware.bluetooth.powerOnBoot = true; 
+  services.blueman.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.lukita = {
@@ -89,17 +93,21 @@
     description = "Lukita";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      bat
-      blender
-      btop
+      aseprite              # Sprite drawing app
+      bat                   # Better cat
+      bitwig-studio         # DAW
+      blender               # 3D modeler
+      btop                  # Better top
       discord
       godot3
+      godot
       home-manager
-      krita
+      krita                 # General drawing app
       obsidian
-      obs-studio
-      zapzap
-      zulip
+      obs-studio            # Screen recorder
+      waydroid              # Android emulator
+      zapzap                # Whatsapp
+      zulip                 # Organization comms
     ];
   };
 
@@ -135,14 +143,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    alacritty
-    kdePackages.dolphin
-    libreoffice
+    alacritty               # Terminal emulator
+    kdePackages.dolphin     # File explorer
+    libreoffice             # Word
     localsend
     git
-    pavucontrol
-    vim-full 
-    vlc
+    pavucontrol             # Manage input and output devices
+    vim-full
+    vlc                     # Video/Audio player
     qalculate-qt
     wget
     unzip
