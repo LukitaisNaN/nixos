@@ -35,6 +35,21 @@
             ./vim.nix
           ];
         };
+
+        andreOs = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+
+          modules = [
+            # ./artist.nix
+            ./configuration.nix
+            ./cinnamon.nix
+            ./hardware-configuration.nix
+            # ./hyprland.nix
+            # ./steam.nix
+            # ./tools.nix
+            ./vim.nix
+          ];
+        };
       };
     };
 }

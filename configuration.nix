@@ -33,7 +33,7 @@
   time.timeZone = "America/Argentina/Cordoba";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "es_AR.UTF-8";
 
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "es_AR.UTF-8";
@@ -104,18 +104,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-    withUWSM = true;
-  };
-
-  environment.sessionVariables = {
-    # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-  };
 
   # Accelerated video playback (idk what it is, but sounds useful)
   hardware.graphics = {
