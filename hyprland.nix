@@ -1,6 +1,16 @@
-{ pkgs, ... }:
+{ pkgs, services, ... }:
 
 {
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+    withUWSM = true;
+  };
+
+  environment.sessionVariables = {
+    # Hint electron apps to use wayland
+    NIXOS_OZONE_WL = "1";
+  };
 
   services.greetd.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
@@ -9,7 +19,8 @@
     brightnessctl     # Self-explanatory
     dunst             # Notification manager
     grim slurp        # hyprshot dependancies
-    hyprcursor        # cursors
+    hyprcursor        # Cursors
+    hyprpaper         # Wallpaper
     hyprprop          # See which properties a window has 
     hyprpolkitagent   # Popup that appears when an app wants elevated permissions
     hyprshot          # Screenshots
