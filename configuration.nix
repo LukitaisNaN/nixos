@@ -9,7 +9,7 @@
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     users = {
-      lukita = import ./home.nix;
+      lukita = import ./users/luki/home.nix;
     };
   };
 
@@ -116,6 +116,7 @@
     alacritty               # Terminal emulator
     discord
     kdePackages.dolphin     # File explorer
+    kdePackages.gwenview
     libreoffice             # Word
     localsend
     git
