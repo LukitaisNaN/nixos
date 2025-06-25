@@ -8,8 +8,8 @@ environment.systemPackages = with pkgs; [
     blender               # 3D modeler
     godot                 # Godot v4.x
     godot3                # Godot v3.6
-    jack2                 # Audio mixer
     kdePackages.kdenlive  # Video editor
     krita                 # General drawing app
+    mixxx                 # DJ mixer
 ];
 }
