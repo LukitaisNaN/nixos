@@ -6,13 +6,6 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      lukita = import ./users/luki/home.nix;
-    };
-  };
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -32,19 +25,16 @@
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "es_AR.UTF-8";
-
   i18n.extraLocaleSettings = {
-    LC_ADDRESS = "es_AR.UTF-8";
+    LC_ADDRESS        = "es_AR.UTF-8";
     LC_IDENTIFICATION = "es_AR.UTF-8";
-    LC_MEASUREMENT = "es_AR.UTF-8";
-    LC_MONETARY = "es_AR.UTF-8";
-    LC_NAME = "es_AR.UTF-8";
-    LC_NUMERIC = "es_AR.UTF-8";
-    LC_PAPER = "es_AR.UTF-8";
-    LC_TELEPHONE = "es_AR.UTF-8";
-    LC_TIME = "es_AR.UTF-8";
+    LC_MEASUREMENT    = "es_AR.UTF-8";
+    LC_MONETARY       = "es_AR.UTF-8";
+    LC_NAME           = "es_AR.UTF-8";
+    LC_NUMERIC        = "es_AR.UTF-8";
+    LC_PAPER          = "es_AR.UTF-8";
+    LC_TELEPHONE      = "es_AR.UTF-8";
+    LC_TIME           = "es_AR.UTF-8";
   };
 
   # Enable Flakes and Experimental features
@@ -72,38 +62,15 @@
   };
 
   # Bluetooth
-  hardware.bluetooth.enable = true; 
-  hardware.bluetooth.powerOnBoot = true; 
-  services.blueman.enable = true;
+  hardware.bluetooth.enable       = true;
+  hardware.bluetooth.powerOnBoot  = true;
+  services.blueman.enable         = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.lukita = {
-    isNormalUser = true;
-    description = "Lukita";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      home-manager
-    ];
-  };
-
-  users.users.andreita = {
-    isNormalUser = true;
-    description = "Andre";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      btop
-    ];
-  };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   # Accelerated video playback (idk what it is, but sounds useful)
   hardware.graphics = {
@@ -114,18 +81,19 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty               # Terminal emulator
-    discord
+    discord                 # Comms
     kdePackages.dolphin     # File explorer
-    kdePackages.gwenview
-    libreoffice             # Word
-    localsend
-    git
+    kdePackages.gwenview    # Image viewer
+    libreoffice             # Word, Excel, etc
+    localsend               # Send files to other devices in same network
+    git                     # Control version
     pavucontrol             # Manage input and output devices
-    vim-full
+    vim-full                # Vim with all compiling features
     vlc                     # Video/Audio player
-    qalculate-qt
+    qalculate-qt            # Calculator
     wget
     unzip
+    zapzap                # Whatsapp
   ];
 
   # Fonts
@@ -135,13 +103,11 @@
     nerd-fonts.hurmit
   ];
 
-  # xdg-portal for gtk aplications and screen-sharing
-  xdg.portal = {
-    enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk 
-      pkgs.xdg-desktop-portal-hyprland
-    ];
+  environment.variables = {
+    EDITOR    = "vim";
+    SHELL     = "bash";
+    TERM      = "alacritty";
+    TERMINAL  = "alacritty";
   };
 
   # Some programs need SUID wrappers, can be configured further or are
