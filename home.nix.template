@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  home.username = "lukita";
-  home.homeDirectory = "/home/lukita";
+  home.username = "username";
+  home.homeDirectory = "/home/userpiola";
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = [
