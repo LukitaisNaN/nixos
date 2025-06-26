@@ -1,5 +1,5 @@
 {
-  description = "A very lol flake";
+  description = "A flake that I share with my family =)";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
@@ -26,10 +26,11 @@
           specialArgs = { inherit inputs system; };
 
           modules = [
+            ./users/luki/luki.nix
             ./artist.nix
             ./configuration.nix
             ./hardware-configuration.nix
-            ./hyprland.nix
+            ./desk-env/hyprland.nix
             ./steam.nix
             ./tools.nix
             ./vim.nix
@@ -40,9 +41,10 @@
           specialArgs = { inherit inputs system; };
 
           modules = [
+            ./users/andre/andreita.nix
             # ./artist.nix
             ./configuration.nix
-            ./cinnamon.nix
+            ./desk-env/cinnamon.nix
             ./hardware-configuration.nix
             # ./hyprland.nix
             # ./steam.nix
