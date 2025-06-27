@@ -5,10 +5,10 @@
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  users.users.andre = {
+  users.users.andreita = {
     isNormalUser = true;
     description = "Andreita";
-    initialPassword = "1212"
+    initialPassword = "1212";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       brave
@@ -19,14 +19,11 @@
   # Brave configuration
   programs.chromium = {
     enable = true;
-    package = pkgs.brave;
-    extensions = [
-      { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-    ];
-    commandLineArgs = [
-      "--disable-features=WebRtcAllowInputVolumeAdjustment"
-    ];
-  }
+    homepageLocation = "google.com";
+   # extensions = [
+   #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+   # ];
+  };
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -37,6 +34,5 @@
 
   # System language.
   i18n.defaultLocale = "es_AR.UTF-8";
-
 
 }
