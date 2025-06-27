@@ -45,7 +45,7 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    delete_generations = "+5";
+    options = "--delete-older-than 7d";
   };
 
   # Enable CUPS to print documents.
