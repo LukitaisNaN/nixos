@@ -41,7 +41,7 @@
           specialArgs = { inherit inputs system; };
 
           modules = [
-            ./users/andre/andreita.nix
+            ./users/andre/andre.nix
             # ./artist.nix
             ./configuration.nix
             ./desk-env/cinnamon.nix
