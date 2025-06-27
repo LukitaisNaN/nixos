@@ -42,13 +42,10 @@
 
           modules = [
             ./users/andre/andre.nix
-            # ./artist.nix
             ./configuration.nix
             ./desk-env/cinnamon.nix
             ./hardware-configuration.nix
-            # ./hyprland.nix
             # ./steam.nix
-            # ./tools.nix
             ./vim.nix
           ];
         };
