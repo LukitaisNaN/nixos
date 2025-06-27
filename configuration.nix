@@ -2,9 +2,9 @@
 
 {
 
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
+ # imports = [
+ #   inputs.home-manager.nixosModules.home-manager
+ # ];
 
   # Bootloader
   boot.loader.systemd-boot.enable = true;
@@ -21,7 +21,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
 
@@ -37,11 +36,17 @@
     LC_TIME           = "es_AR.UTF-8";
   };
 
+  # Configure console keymap
+  console.keyMap = "la-latin1";
+
   # Enable Flakes and Experimental features
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # Configure console keymap
-  console.keyMap = "la-latin1";
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    delete_generations = "+5";
+  };
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
