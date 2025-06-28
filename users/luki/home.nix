@@ -6,7 +6,8 @@
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = [
-    # pkgs.hello
+    pkgs.lmms
+    #pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -17,6 +18,38 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    # Clone
+    (pkgs.writeShellScriptBin "Clone" ''
+      mkdir -p .config/
+      cd .config/
+      git clone https://github.com/LukitaisNaN/nixos.git
+      cd
+      ln -s ~/.config/nixos/users/luki/home.nix ~./apps.nix
+    '')
+
+    # Rebuild
+    (pkgs.writeShellScriptBin "Rebuild" ''
+      sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
+    '')
+
+    # Push
+    (pkgs.writeShellScriptBin "Save" ''
+      cd ~/.config/nixos
+      git add .
+      git commit -m "Automatic update"
+      git push
+      cd 
+    '')
+
+    # Pull
+    (pkgs.writeShellScriptBin "Update" ''
+      cd ~/.config/nixos
+      git merge
+      cd 
+    '')
+
+
   ];
 
   # Manage dotfiles using home.file
@@ -58,4 +91,11 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Lukita";
+    userEmail = "luca.irrazabal@mi.unc.edu.ar";
+  };
+
 }

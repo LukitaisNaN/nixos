@@ -7,11 +7,10 @@
 
   users.users.andreita = {
     isNormalUser = true;
-    description = "Andreita";
+    description = "chuchu";
     initialPassword = "1212";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      brave
       home-manager
     ];
   };
@@ -20,9 +19,10 @@
   programs.chromium = {
     enable = true;
     homepageLocation = "google.com";
-   # extensions = [
-   #   { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
-   # ];
+    extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ]; # ublock origin
+    extraOpts = {
+      "DefaultSearchProviderNewTabURL" = "google.com";
+    };
   };
 
   home-manager = {

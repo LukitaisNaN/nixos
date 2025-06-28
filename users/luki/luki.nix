@@ -26,6 +26,6 @@
   };
 
   # System language.
-  i18n.defaultLocale = "en_US.UTF-8";
+  lib.mkForce.i18n.defaultLocale = "en_US.UTF-8";
 
 }

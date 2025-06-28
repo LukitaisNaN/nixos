@@ -4,8 +4,9 @@
   home.username = "andreita";
   home.homeDirectory = "/home/andreita";
 
-  # home.packages allows you to install Nix packages into your environment.
-  home.packages = [
+  home.packages = with pkgs; [
+    brave
+    kdePackages.okular
     # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -58,4 +59,11 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  programs.git = {
+    enable = true;
+    userName = "Chuchu";
+    userEmail = "andreachinagonzalez@gmail.com";
+  };
+
 }
