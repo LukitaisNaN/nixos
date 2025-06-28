@@ -39,7 +39,7 @@
       git add .
       git commit -m "Automatic update"
       git push
-      cd 
+      cd
     '')
 
     # Pull
