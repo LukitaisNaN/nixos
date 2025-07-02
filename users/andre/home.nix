@@ -5,53 +5,103 @@
   home.homeDirectory = "/home/andreita";
 
   home.packages = with pkgs; [
-    brave
-    kdePackages.okular
-    # pkgs.hello
+    # Escribí acá las aplicaciones que quieras instalar.
+    # Podés buscar cómo se llaman en https://search.nixos.org/packages
+    # Después de agregar o eliminar alguna, escribí "Rebuild" en una terminal.
+    # No te olvides de usar "Save" de vez en cuando.
+    brave               # Navegador
+    kdePackages.okular  # Editor de pdf
+    zoom-us             # Por si tu mamá lo necesita -?
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses.
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    # Estos son los comandos que hice para que no los tengas que hacer
+    # manualmente.
 
-    # # Create simple shell scripts directly inside your configuration.     
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+    # Help
+    (pkgs.writeShellScriptBin "Help" ''
+      echo <<EOF
+      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
+                   archivo de configuración.
+                 En el archivo está explicado qué hacer.
+      "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
+      "Save":    Por si querés guardar en la nube los cambios que hiciste.
+      "Update":  Descarga los cambios que haya en la nube. Normalmente
+                   te voy a indicar cuando haga falta usar este comando =).
+      EOF
+      '')
+
+    # Clone github repository. Don't use or it will restore config. (I think)
+    (pkgs.writeShellScriptBin "Init" ''
+      echo "Creating nix configuration directory..."
+      mkdir -p ~/.config/
+      cd ~/.config/
+      echo "Downloading github repository..."
+      git clone https://github.com/LukitaisNaN/nixos.git
+      echo "OK!"
+      cd ~/
+      ln -s ~/.config/nixos/users/andre/home.nix ~./apps.nix
+
+      echo << EOF
+      Tu contraseña es "1212". Ahora te va a pedir que la cambies.
+      Te va a pedir tu contraseña actual, poné "1212" (Sin las comillas, por si acaso)
+      Después tenés que poner tu nueva contraseña. Te va a pedir repetirla.
+      Si algo sale mal, podés usar "passwd $(user)" para volver a intentarlo.
+      EOF
+
+      echo <<EOF
+      Ahora se va a generar una clave que es necesaria para la nube, 
+      Te va a pedir un par de cosas no hace falta que escribas nada, solo tocá enter.
+      EOF
+
+      ssh-keygen
+      echo "Ahora pasame lo de acá abajo por wsp :P"
+      cat ~/.ssh/id*.pub
+
+      Rebuild
+
+    '')
+
+    # Edit config file
+    (pkgs.writeShellScriptBin "Edit" ''
+      vim ~/apps.nix
+    '')
+
+    # Rebuild
+    (pkgs.writeShellScriptBin "Rebuild" ''
+      sudo nixos-rebuild switch --flake ~/.config/nixos/#andreOs
+    '')
+
+    # Push
+    (pkgs.writeShellScriptBin "Save" ''
+      touch ~/tmp
+      pwd > ~/tmp
+      cd ~/.config/nixos
+      git add .
+      git commit -m "$USER's backup"
+      git rebase
+      git push
+      cd `cat ~/tmp`
+      rm ~/tmp
+      echo "Config uploaded :P"
+    '')
+
+    # Pull
+    (pkgs.writeShellScriptBin "Update" ''
+      cd ~/.config/nixos
+      git merge
+      cd 
+      echo "Update finished"
+    '')
   ];
 
   # Manage dotfiles using home.file
   home.file = {
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
 
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/lukita/etc/profile.d/hm-session-vars.sh
-  #
+  # Tenés ganas de explorar?
+
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "vim";           # Change for an easier one. Maybe atom? idk.
   };
 
   # Dont change even when updating.
@@ -60,6 +110,7 @@
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
+  # Esto es un toque de información necesaria para lo que sería nuestra "nube"
   programs.git = {
     enable = true;
     userName = "Chuchu";

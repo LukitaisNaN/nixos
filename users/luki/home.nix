@@ -5,8 +5,9 @@
   home.homeDirectory = "/home/lukita";
 
   # home.packages allows you to install Nix packages into your environment.
-  home.packages = [
-    pkgs.lmms
+  home.packages = with pkgs; [
+    lmms
+    emacs
     #pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -20,7 +21,7 @@
     # '')
 
     # Clone
-    (pkgs.writeShellScriptBin "Clone" ''
+    (writeShellScriptBin "Clone" ''
       mkdir -p .config/
       cd .config/
       git clone https://github.com/LukitaisNaN/nixos.git
@@ -28,27 +29,44 @@
       ln -s ~/.config/nixos/users/luki/home.nix ~./apps.nix
     '')
 
+    # Help
+    (writeShellScriptBin "Help" ''
+      echo <<EOF
+      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
+                   archivo de configuración.
+                 En el archivo está explicado qué hacer.
+      "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
+      "Save":    Por si querés guardar en la nube los cambios que hiciste.
+      "Update":  Descarga los cambios que haya en la nube. Normalmente
+                   te voy a indicar cuando haga falta usar este comando =).
+      EOF
+      '')
+
+    # Edit config file
+    (writeShellScriptBin "Edit" ''
+      vim ~/apps.nix
+    '')
+
     # Rebuild
-    (pkgs.writeShellScriptBin "Rebuild" ''
+    (writeShellScriptBin "Rebuild" ''
       sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
     '')
 
     # Push
-    (pkgs.writeShellScriptBin "Save" ''
+    (writeShellScriptBin "Save" ''
       cd ~/.config/nixos
       git add .
-      git commit -m "Automatic update"
+      git commit -m "$USER's backup"
       git push
-      cd
+      cd ~/
     '')
 
     # Pull
-    (pkgs.writeShellScriptBin "Update" ''
+    (writeShellScriptBin "Update" ''
       cd ~/.config/nixos
       git merge
       cd 
     '')
-
 
   ];
 

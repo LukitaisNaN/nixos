@@ -5,7 +5,9 @@
   ];
 
   # Install firefox.
-  programs.firefox.enable = true;
+  programs.firefox = {
+    enable = true;
+  };
 
   users.users.lukita = {
     isNormalUser = true;
@@ -20,12 +22,11 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
     users = {
       lukita = import ./home.nix;
     };
   };
 
-  # System language.
-  lib.mkForce.i18n.defaultLocale = "en_US.UTF-8";
-
+  
 }

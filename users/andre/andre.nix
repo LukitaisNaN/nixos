@@ -7,7 +7,7 @@
 
   users.users.andreita = {
     isNormalUser = true;
-    description = "chuchu";
+    description = "Chuchu";
     initialPassword = "1212";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
@@ -27,12 +27,10 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
     users = {
       andreita = import ./home.nix;
     };
   };
-
-  # System language.
-  i18n.defaultLocale = "es_AR.UTF-8";
 
 }

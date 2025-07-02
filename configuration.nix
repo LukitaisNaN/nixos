@@ -7,7 +7,11 @@
  # ];
 
   # Bootloader
-  boot.loader.systemd-boot.enable = true;
+  boot.loader.timeout = 30;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 5;
+  };
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
@@ -24,6 +28,8 @@
   # Set your time zone.
   time.timeZone = "America/Argentina/Cordoba";
 
+  # System language.
+  i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS        = "es_AR.UTF-8";
     LC_IDENTIFICATION = "es_AR.UTF-8";
@@ -87,7 +93,6 @@
   environment.systemPackages = with pkgs; [
     alacritty               # Terminal emulator
     discord                 # Comms
-    kdePackages.dolphin     # File explorer
     kdePackages.gwenview    # Image viewer
     libreoffice             # Word, Excel, etc
     localsend               # Send files to other devices in same network
