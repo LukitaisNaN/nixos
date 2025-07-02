@@ -40,6 +40,8 @@
       cd ~/
       ln -s ~/.config/nixos/users/andre/home.nix ~./apps.nix
 
+      Rebuild
+
       echo << EOF
       Tu contraseña es "1212". Ahora te va a pedir que la cambies.
       Te va a pedir tu contraseña actual, poné "1212" (Sin las comillas, por si acaso)
@@ -55,9 +57,6 @@
       ssh-keygen
       echo "Ahora pasame lo de acá abajo por wsp :P"
       cat ~/.ssh/id*.pub
-
-      Rebuild
-
     '')
 
     # Edit config file
@@ -76,7 +75,7 @@
       pwd > ~/tmp
       cd ~/.config/nixos
       git add .
-      git commit -m "$USER's backup"
+      git commit -m "$USER's automatic backup"
       git rebase
       git push
       cd `cat ~/tmp`

@@ -56,7 +56,7 @@
     (writeShellScriptBin "Save" ''
       cd ~/.config/nixos
       git add .
-      git commit -m "$USER's backup"
+      git commit -m "$USER's automatic backup"
       git push
       cd ~/
     '')
