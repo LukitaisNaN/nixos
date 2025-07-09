@@ -26,6 +26,8 @@
     };
   };
 
+  services.onlyoffice.enable = true;
+
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
