@@ -7,7 +7,7 @@
   # home.packages allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
     lmms
-    emacs
+    bitwig-studio
     #pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -26,7 +26,7 @@
       cd .config/
       git clone https://github.com/LukitaisNaN/nixos.git
       cd
-      ln -s ~/.config/nixos/users/luki/home.nix ~./apps.nix
+      ln -s ~/.config/nixos/users/luki/home.nix ~/apps.nix
     '')
 
     # Help
@@ -34,7 +34,7 @@
       echo <<EOF
       "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
                    archivo de configuración.
-                 En el archivo está explicado qué hacer.
+                 En ese archivo está explicado qué hacer.
       "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
       "Save":    Por si querés guardar en la nube los cambios que hiciste.
       "Update":  Descarga los cambios que haya en la nube. Normalmente
