@@ -26,15 +26,14 @@
           specialArgs = { inherit inputs system; };
 
           modules = [
-            ./users/andre/andre.nix
             ./users/luki/luki.nix
+            ./users/andre/andre.nix
             ./artist.nix
             ./configuration.nix
-            ./hardware-configuration.nix
             ./desk-env/hyprland.nix
-            ./steam.nix
-            ./tools.nix
-            ./vim.nix
+            ./apps/steam.nix
+            ./apps/tools.nix
+            ./apps/vim.nix
           ];
         };
 
@@ -43,12 +42,11 @@
 
           modules = [
             ./users/andre/andre.nix
-            ./users/luki/luki.nix
             ./configuration.nix
+	    #./users/andre/hardware-configuraion.nix
             ./desk-env/cinnamon.nix
-            ./hardware-configuration.nix
-            ./steam.nix
-            ./vim.nix
+            ./apps/steam.nix
+            ./apps/vim.nix
           ];
         };
       };

@@ -2,12 +2,13 @@
 
 {
   imports = [
+    ./hardware-configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
-  users.users.andreita = {
+  users.users.chuchu= {
     isNormalUser = true;
-    description = "Chuchu";
+    description = "Andreita";
     initialPassword = "1212";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
@@ -29,7 +30,7 @@
     extraSpecialArgs = { inherit inputs; };
     useGlobalPkgs = true;
     users = {
-      andreita = import ./home.nix;
+      chuchu = import ./home.nix;
     };
   };
 

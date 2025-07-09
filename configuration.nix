@@ -29,7 +29,7 @@
   time.timeZone = "America/Argentina/Cordoba";
 
   # System language.
-  i18n.defaultLocale = "en_US.UTF-8";
+  i18n.defaultLocale = "es_AR.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS        = "es_AR.UTF-8";
     LC_IDENTIFICATION = "es_AR.UTF-8";
