@@ -28,9 +28,10 @@
           modules = [
             ./users/luki/luki.nix
             ./users/andre/andre.nix
-            ./artist.nix
             ./configuration.nix
             ./desk-env/hyprland.nix
+
+            ./apps/artist.nix
             ./apps/steam.nix
             ./apps/tools.nix
             ./apps/vim.nix
