@@ -23,7 +23,7 @@
     # Help
     (pkgs.writeShellScriptBin "Help" ''
       cat << EOF
-      omg!!! Andre needs help!!! Te dejo por acá los comandos que podés usar, 
+      omg!!! $USER needs help!!! Te dejo por acá los comandos que podés usar, 
       fijate que empiezan con mayúscula.
       "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
                    archivo de configuración.
@@ -36,7 +36,7 @@
       '')
 
     # Clone github repository. Don't use or it will restore config. (I think)
-    (pkgs.writeShellScriptBin "Init" ''
+    (writeShellScriptBin "Init" ''
       echo "Checking if nix configuration folder exists..."
       if [ ! -d "~/.config/nixos"]; then
         echo "Creating nix configuration directory..."
@@ -47,46 +47,44 @@
         echo "OK!"
       else
         echo "Directory already exists, skiping clonation..."
+        cd ~/.config/nixos
+        git remote set-url origin git@github.com:LukitaisNaN/nixos.git
       fi
 
       cd
-      ln -s ~/.config/nixos/users/andre/home.nix ~/apps.nix
+
+      if [ -d "~/Desktop"]; then
+        ln -s ~/.config/nixos/users/andre/home.nix ~/Desktop/apps.nix
+      else
+        ln -s ~/.config/nixos/users/andre/home.nix ~/Escritorio/apps.nix
+      fi
 
       Rebuild
 
-      cat << EOF
-      Tu contraseña es "1212". Ahora te va a pedir que la cambies.
-      Te va a pedir tu contraseña actual, poné "1212" (Sin las comillas, por si acaso)
-      Después tenés que poner tu nueva contraseña. Te va a pedir repetirla.
-      Si algo sale mal, podés usar "passwd $(USER)" para volver a intentarlo.
-      EOF
-
-      sudo passwd chuchu
-
       cat <<EOF
       Ahora se va a generar una clave que es necesaria para la nube, 
-      Te va a pedir un par de cosas no hace falta que escribas nada, solo tocá enter.
+      Te va a pedir un par de cosas
+      no hace falta que escribas nada, solo tocá enter. (Debería ser unas 2-3 veces)
       EOF
 
       ssh-keygen
-      echo "Ahora pasame lo de acá abajo por wsp :P"
+      echo "Y pasame lo de acá abajo por wsp :P"
       cat ~/.ssh/id*.pub
     '')
 
     # Edit config file
-    (pkgs.writeShellScriptBin "Edit" ''
+    (writeShellScriptBin "Edit" ''
       nano ~/.config/nixos/users/andre/home.nix
     '')
 
     # Rebuild
-    (pkgs.writeShellScriptBin "Rebuild" ''
+    (writeShellScriptBin "Rebuild" ''
       sudo nixos-rebuild switch --flake ~/.config/nixos/#andreOs
     '')
 
     # Push
-    (pkgs.writeShellScriptBin "Save" ''
-      touch ~/tmp
-      pwd > ~/tmp
+    (writeShellScriptBin "Save" ''
+      touch ~/tmp pwd > ~/tmp
       cd ~/.config/nixos
       git add .
       git commit -m "$USER's automatic backup"
@@ -98,11 +96,14 @@
     '')
 
     # Pull
-    (pkgs.writeShellScriptBin "Update" ''
+    (writeShellScriptBin "Update" ''
       cd ~/.config/nixos
       git fetch
+      echo "Downloading from github..."
       git merge
       cd 
+      echo "Updating..."
+      Rebuild
       echo "Update finished!"
     '')
   ];
@@ -115,7 +116,7 @@
   # Tenés ganas de explorar?
 
   home.sessionVariables = {
-    EDITOR = "vim";           # Change for an easier one. Maybe atom? idk.
+    EDITOR = "nano";
   };
 
   # Dont change even when updating.

@@ -16,6 +16,13 @@
     ];
   };
 
+  users.users.lukita = {
+  isNormalUser = true;
+  description = "Lukita";
+  extraGroups = [ "networkmanager" "wheel" ];
+  initialPassword = "1212";
+  };
+
   # Brave configuration
   programs.chromium = {
     enable = true;
