@@ -12,6 +12,7 @@
     brave               # Navegador
     brightnessctl       # Para subir y bajar el brillo
     kdePackages.okular  # Editor de pdf
+    onlyoffice-desktopeditors
     zoom-us             # Por si tu mamá lo necesita, es zoom, solo tiene un nombre raro
     
     # Para guardar tocá Ctrl+x, 's' y enter.
@@ -99,6 +100,7 @@
     # Pull
     (pkgs.writeShellScriptBin "Update" ''
       cd ~/.config/nixos
+      git fetch
       git merge
       cd 
       echo "Update finished!"

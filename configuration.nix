@@ -94,7 +94,7 @@
     alacritty               # Terminal emulator
     discord                 # Comms
     kdePackages.gwenview    # Image viewer
-    libreoffice             # Word, Excel, etc
+    #libreoffice             # Word, Excel, etc
     localsend               # Send files to other devices in same network
     git                     # Control version
     pavucontrol             # Manage input and output devices
