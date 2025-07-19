@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     lmms
     bitwig-studio
+    toxic
     #pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
@@ -19,33 +20,6 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
-    # Clone
-    (writeShellScriptBin "Clone" ''
-      mkdir -p .config/
-      cd .config/
-      git clone https://github.com/LukitaisNaN/nixos.git
-      cd
-      ln -s ~/.config/nixos/users/luki/home.nix ~/apps.nix
-    '')
-
-    # Help
-    (writeShellScriptBin "Help" ''
-      echo <<EOF
-      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
-                   archivo de configuración.
-                 En ese archivo está explicado qué hacer.
-      "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
-      "Save":    Por si querés guardar en la nube los cambios que hiciste.
-      "Update":  Descarga los cambios que haya en la nube. Normalmente
-                   te voy a indicar cuando haga falta usar este comando =).
-      EOF
-      '')
-
-    # Edit config file
-    (writeShellScriptBin "Edit" ''
-      vim ~/apps.nix
-    '')
 
     # Rebuild
     (writeShellScriptBin "Rebuild" ''
@@ -64,6 +38,7 @@
     # Pull
     (writeShellScriptBin "Update" ''
       cd ~/.config/nixos
+      git fetch
       git merge
       cd 
     '')
