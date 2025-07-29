@@ -103,7 +103,7 @@
     qalculate-qt            # Calculator
     wget
     unzip
-    zapzap                # Whatsapp
+    zapzap                  # Whatsapp
   ];
 
   # Fonts
