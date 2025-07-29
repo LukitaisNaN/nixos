@@ -27,7 +27,7 @@
 
           modules = [
             ./users/luki/luki.nix
-            ./users/andre/andre.nix
+            #./users/andre/andre.nix
             ./configuration.nix
             ./desk-env/hyprland.nix
 
@@ -47,9 +47,19 @@
 	    #./users/andre/hardware-configuraion.nix
             ./desk-env/cinnamon.nix
             ./apps/steam.nix
-            ./apps/vim.nix
           ];
         };
+
+        eborito = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs system; };
+
+          modules = [
+            ./users/ebo/ebo.nix
+            ./configuration.nix
+            #./desk-env/cinnamon.nix
+          ];
+        };
+
       };
     };
 }
