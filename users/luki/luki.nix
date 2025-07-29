@@ -5,10 +5,13 @@
     ./hardware-configuration.nix
   ];
 
-  # Install firefox.
+  # Install firefox
   programs.firefox = {
     enable = true;
   };
+
+  # Android emulator
+  virtualisation.waydroid.enable = true;
 
   users.users.lukita = {
     isNormalUser = true;
@@ -17,9 +20,20 @@
     initialPassword = "1212";
     packages = with pkgs; [
       home-manager
-      lmms
+      gparted
+
     ];
   };
+
+  #users.users.chuchu= {
+  #  isNormalUser = true;
+  #  description = "Andreita";
+  #  initialPassword = "1212";
+  #  extraGroups = [ "networkmanager" "wheel" ];
+  #  packages = with pkgs; [
+  #    home-manager
+  #  ];
+  #};
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
@@ -28,6 +42,5 @@
       lukita = import ./home.nix;
     };
   };
-
   
 }

@@ -6,10 +6,11 @@
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
-    lmms
-    bitwig-studio
-    toxic
-    #pkgs.hello
+    lzip          # WayDroid_Script dependancy
+    bitwig-studio # DAW
+    toxic         # Lightweight Discord
+    font-awesome  # yes
+    git-lfs       # I use it for gamedev
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -24,6 +25,11 @@
     # Rebuild
     (writeShellScriptBin "Rebuild" ''
       sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
+    '')
+
+    # Test
+    (writeShellScriptBin "Test" ''
+      echo "$USER"
     '')
 
     # Push
