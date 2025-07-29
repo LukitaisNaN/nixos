@@ -6,7 +6,6 @@
       btop                  # Better top
       obsidian              # Markdown editor
       obs-studio            # Screen recorder
-      waydroid              # Android emulator
       zulip                 # Organization comms
   ];
 }
