@@ -21,11 +21,11 @@
     # Help
     (pkgs.writeShellScriptBin "Help" ''
       cat << EOF
-      omg!!! $USER needs help!!! Te dejo por acá los comandos que podés usar, 
+      omg!!! $USER needs help!!! Acá están los comandos que se pueden usar, 
       fijate que empiezan con mayúscula.
       "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
                    archivo de configuración.
-                 En el archivo está explicado qué hacer.
+                 Ahí está explicado qué hacer.
       "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
       "Save":    Por si querés guardar en la nube los cambios que hiciste.
       "Update":  Descarga los cambios que haya en la nube. Normalmente
@@ -33,7 +33,7 @@
       EOF
       '')
 
-    # Clone github repository. Don't use or it will restore config. (I think)
+    # Clone github repository.
     (writeShellScriptBin "Init" ''
       echo "Checking if nix configuration folder exists..."
       if [ ! -d "~/.config/nixos"]; then
@@ -81,10 +81,12 @@
 
     # Push
     (writeShellScriptBin "Save" ''
-      touch ~/tmp pwd > ~/tmp
+      touch ~/tmp 
+      pwd > ~/tmp
       cd ~/.config/nixos
       git add .
       git commit -m "$USER's automatic backup"
+      git fetch
       git rebase
       git push
       cd `cat ~/tmp`

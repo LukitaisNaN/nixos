@@ -56,7 +56,7 @@
           modules = [
             ./users/ebo/ebo.nix
             ./configuration.nix
-            #./desk-env/cinnamon.nix
+            ./desk-env/deepin.nix
           ];
         };
 

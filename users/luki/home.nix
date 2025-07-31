@@ -37,6 +37,8 @@
       cd ~/.config/nixos
       git add .
       git commit -m "$USER's automatic backup"
+      git fetch
+      git rebase
       git push
       cd ~/
     '')
@@ -45,7 +47,7 @@
     (writeShellScriptBin "Update" ''
       cd ~/.config/nixos
       git fetch
-      git merge
+      git rebase
       cd 
     '')
 
