@@ -67,6 +67,7 @@
       ssh-keygen
       echo "Ahora pasame lo de acá abajo por wsp :P"
       cat ~/.ssh/id*.pub
+      Git-Fix
     '')
 
     # Edit config file
@@ -104,6 +105,14 @@
       Rebuild
       echo "Update finished!"
     '')
+
+    # Change git upstream link to do it trough ssh
+    (writeShellScriptBin "Git-Fix" ''
+      cd ~/.config/nixos
+      git remote set-url origin git@github.com:LukitaisNaN/nixos.git
+      cd
+    '')
+
   ];
 
   # Manage dotfiles using home.file
