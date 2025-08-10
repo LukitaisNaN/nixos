@@ -6,6 +6,7 @@
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
+    audacity
     lzip          # WayDroid_Script dependancy
     bitwig-studio # DAW
     toxic         # Lightweight Discord
