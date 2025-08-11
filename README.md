@@ -1,6 +1,6 @@
 # Holis =)
-Hi! This is a Nix repository I share with my familiars to help them avoid windows as much as possible
-meanwhile I can help they with any problems they have with linux.
+Hi! This is a Nix repository I share with my familiars to help them avoid windows while I can help them 
+with any problems they have with linux.
 
 # Features
 - Flakes
