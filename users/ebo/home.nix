@@ -7,14 +7,12 @@
   home.packages = with pkgs; [
     # Escribí acá las aplicaciones que quieras instalar.
     # Podés buscar cómo se llaman en https://search.nixos.org/packages
-    # Después de agregar o eliminar alguna, escribí "Rebuild" en una terminal.
+    # !! Después de agregar o eliminar alguna, escribí "Rebuild" en una terminal.
     # No te olvides de usar "Save" de vez en cuando =).
 
     kdePackages.okular  # Editor de pdf
     zoom-us             # Zoom
     
-    # Para guardar tocá Ctrl+x, 's' y enter.
-
     # Estos son los comandos que hice para que no los tengas que hacer
     # manualmente.
 

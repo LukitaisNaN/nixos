@@ -13,10 +13,9 @@
     brightnessctl               # Para subir y bajar el brillo
     kdePackages.okular          # Editor de pdf
     onlyoffice-desktopeditors
+    spotify                     # =)
     zoom-us                     # Por si tu mamá lo necesita, es zoom, solo tiene un nombre raro
     font-awesome                # Para poder ver íconos bonitos que encuentres en https://fontawesome.com/icons/
-    
-    # Para guardar tocá Ctrl+x, 's' y enter.
 
     # Estos son los comandos que hice para que no los tengas que hacer
     # manualmente.
