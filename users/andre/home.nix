@@ -9,13 +9,16 @@
     # Podés buscar cómo se llaman en https://search.nixos.org/packages
     # Después de agregar o eliminar alguna, escribí "Rebuild" en una terminal.
     # No te olvides de usar "Save" de vez en cuando =).
-    brave                       # Navegador
-    brightnessctl               # Para subir y bajar el brillo
-    kdePackages.okular          # Editor de pdf
+    brave               # Navegador
+    brightnessctl       # Para subir y bajar el brillo
+    joplin-desktop      # App de notas que se puede sincronizar en el celu
+    kdePackages.okular  # Editor de pdf
     onlyoffice-desktopeditors
-    spotify                     # =)
-    zoom-us                     # Por si tu mamá lo necesita, es zoom, solo tiene un nombre raro
-    font-awesome                # Para poder ver íconos bonitos que encuentres en https://fontawesome.com/icons/
+    spotify
+    sticky              # Sticky notes!
+    zoom-us             # Por si tu mamá lo necesita, es zoom, solo tiene un nombre raro
+    
+    # Para guardar tocá Ctrl+x, 's' y enter.
 
     # Estos son los comandos que hice para que no los tengas que hacer
     # manualmente.
@@ -89,6 +92,7 @@
       cd ~/.config/nixos
       git add .
       git commit -m "$USER's automatic backup"
+      git fetch
       git rebase
       git push
       cd `cat ~/tmp`
@@ -141,3 +145,4 @@
   };
 
 }
+
