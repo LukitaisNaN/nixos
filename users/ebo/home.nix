@@ -97,7 +97,8 @@
     (writeShellScriptBin "Update" ''
       cd ~/.config/nixos
       echo "Downloading from github..."
-      git merge
+      git fetch
+      git rebase
       cd 
       echo "Updating..."
       Rebuild

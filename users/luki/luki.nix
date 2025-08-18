@@ -5,6 +5,15 @@
     ./hardware-configuration.nix
   ];
 
+  boot.loader.systemd-boot.extraEntries = {
+    "Arch.conf" = ''
+      title   Arch Linux!
+      linux   /vmlinuz-linux
+      initrd  /initramfs-linux.img
+      options root=UUID=88963925-30db-4cde-ae91-f62a817fa407 rootfstype=ext4 add_efi_memmap rw
+      '';
+  };
+
   # Install firefox
   programs.firefox = {
     enable = true;
@@ -21,7 +30,6 @@
     packages = with pkgs; [
       home-manager
       gparted
-
     ];
   };
 

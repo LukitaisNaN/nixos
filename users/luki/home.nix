@@ -6,12 +6,17 @@
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
-    audacity
-    lzip          # WayDroid_Script dependancy
+    audacity      # Audio editor
     bitwig-studio # DAW
+    dconf         # Dependancy
+    dconf-editor  # GSettings editor
+    lzip          # WayDroid_Script dependancy
+    lsd           # Better ls
     toxic         # Lightweight Discord
+    themix-gui    # Gtk customizer
     font-awesome  # yes
     git-lfs       # I use it for gamedev
+    unrar         # rar uncompressor
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -26,11 +31,6 @@
     # Rebuild
     (writeShellScriptBin "Rebuild" ''
       sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
-    '')
-
-    # Test
-    (writeShellScriptBin "Test" ''
-      echo "$USER"
     '')
 
     # Push
