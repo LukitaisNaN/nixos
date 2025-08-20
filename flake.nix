@@ -35,6 +35,7 @@
             ./apps/steam.nix
             ./apps/tools.nix
             ./apps/vim.nix
+            ./apps/nvim/default.nix
           ];
         };
 
