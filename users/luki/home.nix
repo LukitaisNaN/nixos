@@ -10,8 +10,10 @@
     bitwig-studio # DAW
     dconf         # Dependancy
     dconf-editor  # GSettings editor
+    diff-so-fancy # Better git diff
     lzip          # WayDroid_Script dependancy
     lsd           # Better ls
+    networkmanagerapplet
     toxic         # Lightweight Discord
     themix-gui    # Gtk customizer
     font-awesome  # yes
@@ -56,6 +58,9 @@
 
   # Manage dotfiles using home.file
   home.file = {
+    ".config/nvim" = {
+     source = config.lib.file.mkOutOfStoreSymlink "/home/lukita/.config/nvim";
+    };
     # # Building this configuration will create a copy of 'dotfiles/screenrc' in
     # # the Nix store. Activating the configuration will then make '~/.screenrc' a
     # # symlink to the Nix store copy.
