@@ -98,7 +98,6 @@
     localsend               # Send files to other devices in same network
     git                     # Control version
     pavucontrol             # Manage input and output devices
-    vim-full                # Vim with all compiling features
     vlc                     # Video/Audio player
     qalculate-qt            # Calculator
     wget
