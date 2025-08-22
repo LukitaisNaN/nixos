@@ -1,8 +1,20 @@
 { config, pkgs, ... }:
 
+# I should modularize this
+let
+  homeDir = config.home.homeDirectory;
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
   home.username = "lukita";
   home.homeDirectory = "/home/lukita";
+
+  programs.git = {
+    enable = true;
+    userName = "Lukita";
+    userEmail = "luca.irrazabal@mi.unc.edu.ar";
+  };
+
 
   # home.packages allows you to install Nix packages into your environment.
   home.packages = with pkgs; [
@@ -10,25 +22,16 @@
     bitwig-studio # DAW
     dconf         # Dependancy
     dconf-editor  # GSettings editor
+	delta		  # Git pager
     diff-so-fancy # Better git diff
     lzip          # WayDroid_Script dependancy
     lsd           # Better ls
     networkmanagerapplet
     toxic         # Lightweight Discord
     themix-gui    # Gtk customizer
-    font-awesome  # yes
-    git-lfs       # I use it for gamedev
+    font-awesome  # Font
+    git-lfs       # Git large file storage
     unrar         # rar uncompressor
-
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses.
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # Create simple shell scripts directly inside your configuration.     
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
 
     # Rebuild
     (writeShellScriptBin "Rebuild" ''
@@ -56,41 +59,23 @@
 
   ];
 
-  # Manage dotfiles using home.file
+  # Manage dotfiles
   home.file = {
-    ".config/nvim" = {
-     source = config.lib.file.mkOutOfStoreSymlink "/home/lukita/.config/nvim";
-    };
-    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
-    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
-    # # symlink to the Nix store copy.
-    # ".screenrc".source = dotfiles/screenrc;
-
-    # # You can also set the file content immediately.
-    # ".gradle/gradle.properties".text = ''
-    #   org.gradle.console=verbose
-    #   org.gradle.daemon.idletimeout=3600000
-    # '';
+    ".config/hypr".source 		= symlink "${config.home.sessionVariables.DOTS}/$DOTS/hypr";
+    ".config/waybar".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
+    ".config/nvim".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
+    ".config/vim/vimrc".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
+	".config/alacritty".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
+	".config/btop".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/btop";
+	".gitconfig".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/gitconfig";
+	".bash_aliases".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
+	".bashrc".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
   };
 
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/lukita/etc/profile.d/hm-session-vars.sh
-  #
+  # Set environment variables
   home.sessionVariables = {
     EDITOR = "vim";
+	DOTS = "Personal";
   };
 
   # Dont change even when updating.
@@ -98,11 +83,5 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  programs.git = {
-    enable = true;
-    userName = "Lukita";
-    userEmail = "luca.irrazabal@mi.unc.edu.ar";
-  };
 
 }
