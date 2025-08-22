@@ -50,5 +50,10 @@
       lukita = import ./home.nix;
     };
   };
+
+  services.mysql = {
+  	enable = true;
+	package = pkgs.mysql84;
+  };
   
 }
