@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Ask for sudo permission
-echo "Este programa necesita permisos de administrador. Te va a pedir que pongas tu contraseña para poder continuar"
-[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
+#echo "Este programa necesita permisos de administrador. Te va a pedir que pongas tu contraseña para poder continuar"
+#[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
 # Clone nix repository if...
 echo "Checking if nix configuration folder exists..."
