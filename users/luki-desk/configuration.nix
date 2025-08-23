@@ -8,14 +8,16 @@
   ];
 
   # Bootloader
-  boot.loader.grub = {
-    enable = true;
-    useOSProber = true;
+  boot.loader = {
+    grub = {
+      enable = true;
+      device = "nodev";
+      useOSProber = true;
+      efiSupport = true;
+    };
+
+    efi.canTouchEfiVariables = true;
   };
-  boot.loader.timeout = 30;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.loader.grub.devices = [ "/dev/sda" ];
-  boot.loader.grub.efiSupport = true;
 
   networking.hostName = "home-server"; # Define your hostname.
 
@@ -43,17 +45,13 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alacritty               # Terminal emulator
-    discord                 # Comms
-    kdePackages.gwenview    # Image viewer
     #libreoffice             # Word, Excel, etc
     localsend               # Send files to other devices in same network
     git                     # Control version
     pavucontrol             # Manage input and output devices
     vlc                     # Video/Audio player
-    qalculate-qt            # Calculator
     wget
     unzip
-    zapzap                  # Whatsapp
   ];
 
   environment.variables = {
@@ -139,5 +137,6 @@
     enable = true;
   };
 
+  system.stateVersion = "24.11"; # Did you read the comment?
 
 }
