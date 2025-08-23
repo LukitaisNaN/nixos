@@ -61,6 +61,13 @@
           ];
         };
 
+        luki-desk = nixpkgs.lib.nixosSystem {
+	  specialArgs = { inherit inputs system; };
+	  modules = [
+ 	    ./users/luki-desk/configuration.nix
+	  ];
+	};
+
       };
     };
 }
