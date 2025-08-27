@@ -63,6 +63,7 @@ in
   home.file = {
     ".config/hypr".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/hypr";
     ".config/waybar".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
+    ".config/wofi".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/wofi";
     ".config/nvim".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
     ".config/vim/vimrc".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
 	".config/alacritty".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
