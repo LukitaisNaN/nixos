@@ -1,6 +1,15 @@
 {
   description = "A flake that I share with my family =)";
 
+  nixConfig = {
+    extra-substituters = [
+      "https://nix-community.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
@@ -8,6 +17,9 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -45,11 +57,10 @@
           modules = [
             ./users/andre/andre.nix
             ./configuration.nix
-	    #./users/andre/hardware-configuraion.nix
+	        #./users/andre/hardware-configuraion.nix
             ./desk-env/cinnamon.nix
             ./apps/steam.nix
-          ];
-        };
+          ]; };
 
         eborito = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
