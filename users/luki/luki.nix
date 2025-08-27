@@ -1,5 +1,6 @@
 { config, inputs, pkgs, system, ... }:
 {
+
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
@@ -32,16 +33,6 @@
       gparted
     ];
   };
-
-  #users.users.chuchu= {
-  #  isNormalUser = true;
-  #  description = "Andreita";
-  #  initialPassword = "1212";
-  #  extraGroups = [ "networkmanager" "wheel" ];
-  #  packages = with pkgs; [
-  #    home-manager
-  #  ];
-  #};
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };

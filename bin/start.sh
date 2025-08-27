@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Ask for sudo permission
-echo "Este programa necesita permisos de administrador. Te va a pedir que pongas tu contraseña para poder continuar"
-[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
+#echo "Este programa necesita permisos de administrador. Te va a pedir que pongas tu contraseña para poder continuar"
+#[ "$UID" -eq 0 ] || exec sudo "$0" "$@"
 
 # Clone nix repository if...
 echo "Checking if nix configuration folder exists..."
@@ -13,7 +13,7 @@ if [ ! -d "$HOME/.config/nixos" ]; then
   mkdir -p "$HOME/.config"				# Create .config dir (Does nothing if .config already exists) 
   cd "$HOME/.config"					# cd into .config
   echo "Downloading github repository..."		 
-  git clone git@github.com:LukitaisNaN/nixos.git	# Clone using ssh
+  git clone https://github.com/LukitaisNaN/nixos.git	# Clone
   echo "OK!"
 
 # If repository was already downloaded, skip clonation and set ssh url
@@ -37,9 +37,11 @@ cd "$HOME"
 
 # Create symbolic link to 'Desktop' or 'Escritorio' dir
 if [ -d "$HOME/Desktop" ]; then
-  ln -s "$HOME/.config/nixos/users/ebo/home.nix" "$HOME/Desktop/apps.nix"
+  ln -s "$HOME/.config/nixos/users/$USER/home.nix" "$HOME/Desktop/apps.nix"
+elif [ -d "$HOME/Escritorio" ]; then
+  ln -s "$HOME/.config/nixos/users/$USER/home.nix" "$HOME/Escritorio/apps.nix"
 else
-  ln -s "$HOME/.config/nixos/users/ebo/home.nix" "$HOME/Escritorio/apps.nix"
+  echo "Failed to create Symbolic link =("
 fi
 
 # Use nix cachix to get binaries from community instead of rebuilding everything on
@@ -47,9 +49,9 @@ fi
 echo "Installing nix cachix..."
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 sudo cachix use nix-community
-echo "DONE"
+echo "Done!"
 
-sudo nixos-rebuild switch --flake "$HOME/.config/nixos/#eborito"
+sudo nixos-rebuild switch --flake "$HOME/.config/nixos/#$USER"
 
 echo "Ahora se va a generar una clave que es necesaria para la nube.
 Te va a pedir un par de cosas. No hace falta que escribas nada, solo tocá enter."  
