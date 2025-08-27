@@ -57,10 +57,11 @@
           modules = [
             ./users/andre/andre.nix
             ./configuration.nix
-	        #./users/andre/hardware-configuraion.nix
+            #./users/andre/hardware-configuraion.nix
             ./desk-env/cinnamon.nix
             ./apps/steam.nix
-          ]; };
+          ];
+        };
 
         eborito = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs system; };
@@ -73,11 +74,11 @@
         };
 
         luki-desk = nixpkgs.lib.nixosSystem {
-	  specialArgs = { inherit inputs system; };
-	  modules = [
- 	    ./users/luki-desk/configuration.nix
-	  ];
-	};
+          specialArgs = { inherit inputs system; };
+          modules = [
+          ./users/luki-desk/configuration.nix
+          ];
+        };
 
       };
     };

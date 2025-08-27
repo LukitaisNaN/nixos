@@ -2,9 +2,10 @@
 
 {
 
- # imports = [
- #   inputs.home-manager.nixosModules.home-manager
- # ];
+  imports = [
+    #inputs.home-manager.nixosModules.home-manager
+	./cachix.nix
+  ];
 
   # Bootloader
   boot.loader.timeout = 30;

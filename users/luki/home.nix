@@ -61,13 +61,13 @@ in
 
   # Manage dotfiles
   home.file = {
-    ".config/hypr".source 		= symlink "${config.home.sessionVariables.DOTS}/$DOTS/hypr";
+    ".config/hypr".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/hypr";
     ".config/waybar".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
     ".config/nvim".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
     ".config/vim/vimrc".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
 	".config/alacritty".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
 	".config/btop".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/btop";
-	".gitconfig".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/gitconfig";
+	".gitconfig".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/.gitconfig";
 	".bash_aliases".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
 	".bashrc".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
   };

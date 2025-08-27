@@ -1,0 +1,4 @@
+Create apps/nvim/flake.nix to get nvim-nightly without messing with
+base flake.lock 
+
+Create branch until correctly implementing cachix

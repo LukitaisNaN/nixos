@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
   ];
 
   # Install firefox
@@ -15,7 +15,7 @@
 
   users.users.ebo = {
     isNormalUser = true;
-    description = "Evo";
+    description = "ebo";
     extraGroups = [ "networkmanager" "wheel" ];
     initialPassword = "1212";
     packages = with pkgs; [
