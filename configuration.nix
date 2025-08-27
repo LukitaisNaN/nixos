@@ -108,6 +108,7 @@
 
   # Fonts
   fonts.packages = with pkgs; [
+    nerd-fonts.agave
     nerd-fonts._0xproto
     noto-fonts-emoji
     nerd-fonts.hurmit
