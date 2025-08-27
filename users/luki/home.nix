@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-# I should modularize this
+# Maybe I should modularize this
 let
   homeDir = config.home.homeDirectory;
   symlink = config.lib.file.mkOutOfStoreSymlink;
@@ -20,6 +20,7 @@ in
   home.packages = with pkgs; [
     audacity      # Audio editor
     bitwig-studio # DAW
+	clang		  # C LLVM
     dconf         # Dependancy
     dconf-editor  # GSettings editor
 	delta		  # Git pager
