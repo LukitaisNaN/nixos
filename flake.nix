@@ -77,6 +77,8 @@
           specialArgs = { inherit inputs system; };
           modules = [
           ./users/luki-desk/configuration.nix
+	  ./desk-env/hyprland.nix
+          ./apps/nvim/default.nix
           ];
         };
 

@@ -77,7 +77,7 @@ in
   # Set environment variables
   home.sessionVariables = {
     EDITOR = "vim";
-	DOTS = "Personal";
+    DOTS = "Personal";
   };
 
   # Dont change even when updating.

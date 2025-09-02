@@ -7,6 +7,14 @@
     ./hardware-configuration.nix
   ];
 
+  home-manager = {
+    extraSpecialArgs = { inherit inputs; };
+    useGlobalPkgs = true;
+    users = {
+      luki-desk = import ./home.nix;
+    };
+  };
+
   # Bootloader
   boot.loader = {
     grub = {
@@ -40,6 +48,8 @@
       vim
     ];
   };
+
+  programs.firefox.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

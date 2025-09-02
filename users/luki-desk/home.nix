@@ -1,17 +1,15 @@
 { config, pkgs, ... }:
 
+let
+  homeDir = config.home.homeDirectory;
+  symlink = config.lib.file.mkOutOfStoreSymlink;
+in
 {
   home.username = "luki-desk";
   home.homeDirectory = "/home/luki-desk";
 
   home.packages = with pkgs; [
-    # Escribí acá las aplicaciones que quieras instalar.
-    # Podés buscar cómo se llaman en https://search.nixos.org/packages
-    # Después de agregar o eliminar alguna, escribí "Rebuild" en una terminal.
-    # No te olvides de usar "Save" de vez en cuando =).
-    
-    # Estos son los comandos que hice para que no los tengas que hacer
-    # manualmente.
+    lsd
 
     # Help
     (pkgs.writeShellScriptBin "Help" ''
@@ -56,14 +54,27 @@
       Rebuild
       echo "Update finished!"
     '')
-  ];
+          ];
 
   # Manage dotfiles using home.file
   home.file = {
-
+    ".config/hypr".source       = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/hypr";
+    ".config/waybar".source     = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
+    ".config/wofi".source       = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/wofi";
+    ".config/nvim".source       = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
+    ".config/vim/vimrc".source  = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
+    ".config/alacritty".source  = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
+    ".config/btop".source       = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/btop";
+    ".gitconfig".source         = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/.gitconfig";
+    ".bash_aliases".source      = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
+    ".bashrc".source            = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
   };
 
-  # Tenés ganas de leer?
+  # Set environment variables
+  home.sessionVariables = {
+    EDITOR = "vim";
+    DOTS   = "Personal";
+  };
 
   # Dont change even when updating.
   home.stateVersion = "24.11"; 
