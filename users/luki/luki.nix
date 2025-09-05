@@ -22,6 +22,8 @@
 
   # Android emulator
   virtualisation.waydroid.enable = true;
+  
+  services.onlyoffice.enable = true;
 
   users.users.lukita = {
     isNormalUser = true;

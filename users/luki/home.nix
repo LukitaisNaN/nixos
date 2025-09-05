@@ -21,6 +21,7 @@ in
     audacity      # Audio editor
     bitwig-studio # DAW
 	clang		  # C LLVM
+	dbeaver-bin	  # DB manager
     dconf         # Dependancy
     dconf-editor  # GSettings editor
 	delta		  # Git pager
@@ -32,6 +33,7 @@ in
     themix-gui    # Gtk customizer
     font-awesome  # Font
     git-lfs       # Git large file storage
+    onlyoffice-desktopeditors
     unrar         # rar uncompressor
 
     # Rebuild
