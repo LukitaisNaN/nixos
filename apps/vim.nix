@@ -10,5 +10,5 @@
       pyright       # Python lsp
       tree          # Directories tree view
     ];
-    
+
 }

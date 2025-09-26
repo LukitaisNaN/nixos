@@ -15,7 +15,7 @@
     grim slurp              # hyprshot dependancies
     hyprcursor              # Cursors
     hyprpaper               # Wallpaper
-    hyprprop                # See which properties a window has 
+    hyprprop                # See which properties a window has
     hyprpolkitagent         # Popup that appears when an app wants elevated permissions
     hyprshot                # Screenshots
     nwg-look                # GTK-settings editor
@@ -37,7 +37,7 @@
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-gtk 
+      pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
     ];
   };

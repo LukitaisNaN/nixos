@@ -2,6 +2,10 @@
 
 {
 
+  environment.systemPackages = with pkgs; [
+    wl-clipboard            # Copy/paste utilities
+  ];
+
   services.libinput.enable = true;
 
   services.displayManager.defaultSession = "cinnamon";

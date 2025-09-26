@@ -17,7 +17,7 @@
     spotify
     sticky              # Sticky notes!
     zoom-us             # Por si tu mamá lo necesita, es zoom, solo tiene un nombre raro
-    
+
     # Para guardar tocá Ctrl+x, 's' y enter.
 
     # Estos son los comandos que hice para que no los tengas que hacer
@@ -26,9 +26,9 @@
     # Help
     (pkgs.writeShellScriptBin "Help" ''
       cat << EOF
-      omg!!! $USER needs help!!! Te dejo por acá los comandos que podés usar, 
+      omg!!! $USER needs help!!! Te dejo por acá los comandos que podés usar,
       fijate que empiezan con mayúscula.
-      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
+      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un
                    archivo de configuración.
                  En el archivo está explicado qué hacer.
       "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
@@ -106,12 +106,12 @@
       git fetch
       echo "Downloading from github..."
       git merge
-      cd 
+      cd
       echo "Updating..."
       Rebuild
       echo "Update finished!"
     '')
-    
+
     # Change git upstream link to do it trough ssh
     (writeShellScriptBin "Git-Fix" ''
       cd ~/.config/nixos

@@ -1,91 +1,103 @@
 { config, pkgs, ... }:
 
-# Maybe I should modularize this
-let
-  homeDir = config.home.homeDirectory;
-  symlink = config.lib.file.mkOutOfStoreSymlink;
-in
-{
-  home.username = "lukita";
-  home.homeDirectory = "/home/lukita";
+  let
+    homeDir = config.home.homeDirectory;
+    symlink = config.lib.file.mkOutOfStoreSymlink;
+  in
+  {
 
-  programs.git = {
-    enable = true;
-    userName = "Lukita";
-    userEmail = "luca.irrazabal@mi.unc.edu.ar";
-  };
-
-
-  # home.packages allows you to install Nix packages into your environment.
-  home.packages = with pkgs; [
-    audacity      # Audio editor
-    bitwig-studio # DAW
-	clang		  # C LLVM
-	dbeaver-bin	  # DB manager
-    dconf         # Dependancy
-    dconf-editor  # GSettings editor
-	delta		  # Git pager
-    diff-so-fancy # Better git diff
-    lzip          # WayDroid_Script dependancy
-    lsd           # Better ls
-    networkmanagerapplet
-    toxic         # Lightweight Discord
-    themix-gui    # Gtk customizer
-    font-awesome  # Font
-    git-lfs       # Git large file storage
-    onlyoffice-desktopeditors
-    unrar         # rar uncompressor
-
-    # Rebuild
-    (writeShellScriptBin "Rebuild" ''
-      sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
-    '')
-
-    # Push
-    (writeShellScriptBin "Save" ''
-      cd ~/.config/nixos
-      git add .
-      git commit -m "$USER's automatic backup"
-      git fetch
-      git rebase
-      git push
-      cd ~/
-    '')
-
-    # Pull
-    (writeShellScriptBin "Update" ''
-      cd ~/.config/nixos
-      git fetch
-      git rebase
-      cd 
-    '')
-
+  imports = [
+    ./db.nix
   ];
 
-  # Manage dotfiles
-  home.file = {
-    ".config/hypr".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/hypr";
-    ".config/waybar".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
-    ".config/wofi".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/wofi";
-    ".config/nvim".source 		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
-    ".config/vim/vimrc".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
-	".config/alacritty".source 	= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
-	".config/btop".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/btop";
-	".gitconfig".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/.gitconfig";
-	".bash_aliases".source		= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
-	".bashrc".source			= symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
-  };
+    home.username = "lukita";
+    home.homeDirectory = "/home/lukita";
 
-  # Set environment variables
-  home.sessionVariables = {
-    EDITOR = "vim";
-    DOTS = "Personal";
-  };
+    programs.git = {
+      enable = true;
+      userName = "Lukita";
+      userEmail = "luca.irrazabal@mi.unc.edu.ar";
+    };
 
-  # Dont change even when updating.
-  home.stateVersion = "24.11"; 
+    # home.packages allows you to install Nix packages into your environment.
+    home.packages = with pkgs; [
+      audacity      # Audio editor
+      bitwig-studio # DAW
+      clang         # C LLVM
+      clang-tools   # clangd
+      dconf         # Dependancy
+      dconf-editor  # GSettings editor
+      delta         # Git pager
+      diff-so-fancy # Better git diff
+      gh            # Github Cli
+      lzip          # WayDroid_Script dependancy
+      lsd           # Better ls
+      networkmanagerapplet
+      toxic         # Lightweight Discord
+      themix-gui    # Gtk customizer
+      font-awesome  # Font
+      git-lfs       # Git large file storage
+      unrar         # rar uncompressor
+      onlyoffice-desktopeditors
+      syncthing
+      showmethekey
+      wev
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+      # Rebuild
+      (writeShellScriptBin "Rebuild" ''
+        sudo nixos-rebuild switch --flake ~/.config/nixos/#lukitaOs
+      '')
 
+      # Push
+      (writeShellScriptBin "Save" ''
+        cd ~/.config/nixos
+        git add .
+        git commit -m "$USER's automatic backup"
+        git fetch
+        git rebase
+        git push
+        cd ~/
+      '')
+
+      # Pull
+      (writeShellScriptBin "Update" ''
+        cd ~/.config/nixos
+        git fetch
+        git rebase
+        cd
+      '')
+
+    ];
+
+    # Manage dotfiles
+    home.file = {
+      ".config/hypr".source         = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/hypr";
+      ".config/waybar".source       = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/waybar";
+      ".config/wofi".source         = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/wofi";
+      ".config/nvim".source         = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/nvim";
+      ".config/vim/vimrc".source    = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/vimrc";
+      ".config/alacritty".source    = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/alacritty";
+      ".config/btop".source         = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/btop";
+      ".gitconfig".source           = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/.gitconfig";
+      ".bash_aliases".source        = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
+      ".bashrc".source              = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
+    };
+
+    # Set environment variables
+    home.sessionVariables = {
+      EDITOR = "vim";
+      DOTS = "Personal";
+    };
+
+    # Dont change even when updating.
+    home.stateVersion = "24.11";
+
+    # Let Home Manager install and manage itself.
+    programs.home-manager.enable = true;
+
+    services.wlsunset = {
+      enable = true;
+      latitude = -31;
+      longitude = -64;
+    };
 }

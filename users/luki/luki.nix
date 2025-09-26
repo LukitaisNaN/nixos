@@ -1,9 +1,17 @@
 { config, inputs, pkgs, system, ... }:
+
 {
 
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ./hardware-configuration.nix
+    ./../../desk-env/hyprland.nix
+    ./../../apps/code/pkgmng.nix
+    ./../../apps/artist.nix
+    ./../../apps/steam.nix
+    ./../../apps/tools.nix
+    ./../../apps/vim.nix
+    ./../../apps/nvim/default.nix
   ];
 
   boot.loader.systemd-boot.extraEntries = {
@@ -22,7 +30,6 @@
 
   # Android emulator
   virtualisation.waydroid.enable = true;
-  
   services.onlyoffice.enable = true;
 
   users.users.lukita = {
@@ -48,5 +55,5 @@
   	enable = true;
 	package = pkgs.mysql84;
   };
-  
+
 }

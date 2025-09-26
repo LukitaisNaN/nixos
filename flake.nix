@@ -12,13 +12,14 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
+    # nvf.url = "github:notashelf/nvf";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
 
   };
 
@@ -41,13 +42,7 @@
             ./users/luki/luki.nix
             #./users/andre/andre.nix
             ./configuration.nix
-            ./desk-env/hyprland.nix
-
-            ./apps/artist.nix
-            ./apps/steam.nix
-            ./apps/tools.nix
-            ./apps/vim.nix
-            ./apps/nvim/default.nix
+            #nvf.nixosModules.default
           ];
         };
 
