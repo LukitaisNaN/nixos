@@ -119,6 +119,7 @@
     SHELL     = "bash";
     TERM      = "alacritty";
     TERMINAL  = "alacritty";
+    NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
   };
 
   # Some programs need SUID wrappers, can be configured further or are
