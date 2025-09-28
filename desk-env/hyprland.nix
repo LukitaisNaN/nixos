@@ -23,12 +23,7 @@
     waybar                  # Wayland bar
     wl-clipboard            # Copy/paste utilities
     wofi                    # Application launcher
- ];
-
-  environment.sessionVariables = {
-    # Hint electron apps to use wayland
-    NIXOS_OZONE_WL = "1";
-  };
+  ];
 
   services.greetd.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
