@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, system, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -14,13 +14,6 @@
     packages = with pkgs; [
       home-manager
     ];
-  };
-
-  users.users.lukita = {
-  isNormalUser = true;
-  description = "Lukita";
-  extraGroups = [ "networkmanager" "wheel" ];
-  initialPassword = "1212";
   };
 
   # Brave configuration
