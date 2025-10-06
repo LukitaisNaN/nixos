@@ -8,6 +8,6 @@ echo "Este programa necesita permisos de administrador. Te va a pedir que pongas
 
 nix-env -iA cachix -f https://cachix.org/api/v1/install
 
-cachix use nix-community
+cachix use lukitaisnan
 
 Rebuild

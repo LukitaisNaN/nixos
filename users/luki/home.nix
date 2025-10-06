@@ -30,6 +30,7 @@
       delta         # Git pager
       diff-so-fancy # Better git diff
       gh            # Github Cli
+      jq            # Command Line json processor. Used in hypr/bin/smartcritty.sh
       lzip          # WayDroid_Script dependancy
       lsd           # Better ls
       networkmanagerapplet
@@ -39,6 +40,7 @@
       git-lfs       # Git large file storage
       unrar         # rar uncompressor
       onlyoffice-desktopeditors
+      postman
       syncthing
       showmethekey
       wev
@@ -81,6 +83,7 @@
       ".gitconfig".source           = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/.gitconfig";
       ".bash_aliases".source        = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/aliases";
       ".bashrc".source              = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/bash/bashrc";
+      ".config/helix".source        = symlink "${homeDir}/${config.home.sessionVariables.DOTS}/helix";
     };
 
     # Set environment variables

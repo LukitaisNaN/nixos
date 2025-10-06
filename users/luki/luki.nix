@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, system, ... }:
+{ inputs, pkgs, lib, ... }:
 
 {
 
@@ -7,6 +7,7 @@
     ./hardware-configuration.nix
     ./../../desk-env/hyprland.nix
     ./../../apps/code/pkgmng.nix
+    ./../../apps/code/lsp.nix
     ./../../apps/artist.nix
     ./../../apps/steam.nix
     ./../../apps/tools.nix
@@ -27,6 +28,10 @@
   programs.firefox = {
     enable = true;
   };
+
+  # Disable some services
+  systemd.services."onlyoffice-converter".wantedBy = lib.mkForce [];
+  systemd.services."onlyoffice-docservice".wantedBy = lib.mkForce [];
 
   # Android emulator
   virtualisation.waydroid.enable = true;

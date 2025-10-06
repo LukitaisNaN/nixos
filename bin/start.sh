@@ -10,9 +10,9 @@ echo "Checking if nix configuration folder exists..."
 # If .config/nixos doesn't exist, create it (aka clone git repository)
 if [ ! -d "$HOME/.config/nixos" ]; then
   echo "Creating nix configuration directory..."
-  mkdir -p "$HOME/.config"				# Create .config dir (Does nothing if .config already exists) 
+  mkdir -p "$HOME/.config"				# Create .config dir (Does nothing if .config already exists)
   cd "$HOME/.config"					# cd into .config
-  echo "Downloading github repository..."		 
+  echo "Downloading github repository..."
   git clone https://github.com/LukitaisNaN/nixos.git	# Clone
   echo "OK!"
 
@@ -54,7 +54,7 @@ echo "Done!"
 sudo nixos-rebuild switch --flake "$HOME/.config/nixos/#$USER"
 
 echo "Ahora se va a generar una clave que es necesaria para la nube.
-Te va a pedir un par de cosas. No hace falta que escribas nada, solo tocá enter."  
+Te va a pedir un par de cosas. No hace falta que escribas nada, solo tocá enter." 
 
 ssh-keygen
 

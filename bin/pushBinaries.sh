@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
-
-nix-build | cachix push nix-community
+cd ..
+cachix push lukitaisnan $(nix path-info ./result)

@@ -16,16 +16,6 @@
     ];
   };
 
-  # Brave configuration
-  programs.chromium = {
-    enable = true;
-    homepageLocation = "google.com";
-    extensions = [ "cjpalhdlnbpafiamejdnhcphjbkeiagm" ]; # ublock origin
-    extraOpts = {
-      "DefaultSearchProviderNewTabURL" = "google.com";
-    };
-  };
-
   services.onlyoffice.enable = true;
 
   home-manager = {
