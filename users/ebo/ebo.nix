@@ -30,5 +30,5 @@
       ebo = import ./home.nix;
     };
   };
-  
+
 }

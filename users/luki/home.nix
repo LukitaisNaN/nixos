@@ -22,7 +22,6 @@
     # home.packages allows you to install Nix packages into your environment.
     home.packages = with pkgs; [
       audacity      # Audio editor
-      bitwig-studio # DAW
       clang         # C LLVM
       clang-tools   # clangd
       dconf         # Dependancy
@@ -43,6 +42,7 @@
       postman
       syncthing
       showmethekey
+      vscode
       wev
 
       # Rebuild

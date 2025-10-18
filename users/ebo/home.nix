@@ -12,16 +12,16 @@
 
     kdePackages.okular  # Editor de pdf
     zoom-us             # Zoom
-    
+
     # Estos son los comandos que hice para que no los tengas que hacer
     # manualmente.
 
     # Help
     (pkgs.writeShellScriptBin "Help" ''
       cat << EOF
-      omg!!! $USER needs help!!! Acá están los comandos que se pueden usar, 
+      omg!!! $USER needs help!!! Acá están los comandos que se pueden usar,
       fijate que empiezan con mayúscula.
-      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un 
+      "Edit":    Usalo cuando quieras instalar algún programa, te va a abrir un
                    archivo de configuración.
                  Ahí está explicado qué hacer.
       "Rebuild": Usalo después de "Edit" para instalar los programas que hayas agregado.
@@ -80,7 +80,7 @@
 
     # Push
     (writeShellScriptBin "Save" ''
-      touch ~/tmp 
+      touch ~/tmp
       pwd > ~/tmp
       cd ~/.config/nixos
       git add .
@@ -99,7 +99,7 @@
       echo "Downloading from github..."
       git fetch
       git rebase
-      cd 
+      cd
       echo "Updating..."
       Rebuild
       echo "Update finished!"
