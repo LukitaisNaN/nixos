@@ -26,7 +26,7 @@
       clang-tools   # clangd
       dconf         # Dependancy
       dconf-editor  # GSettings editor
-      delta         # Git pager
+      delta         # Pager
       diff-so-fancy # Better git diff
       gh            # Github Cli
       jq            # Command Line json processor. Used in hypr/bin/smartcritty.sh
@@ -40,8 +40,9 @@
       unrar         # rar uncompressor
       onlyoffice-desktopeditors
       postman
-      syncthing
+      sl
       showmethekey
+      syncthing
       vscode
       wev
 
