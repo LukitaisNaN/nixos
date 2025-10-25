@@ -140,8 +140,8 @@
   # Esto es un toque de información necesaria para lo que sería nuestra "nube"
   programs.git = {
     enable = true;
-    user.name = "Chuchu";
-    user.email = "andreachinagonzalez@gmail.com";
+    userName = "Chuchu";
+    userEmail = "andreachinagonzalez@gmail.com";
   };
 
 }

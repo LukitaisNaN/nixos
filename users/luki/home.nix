@@ -38,7 +38,6 @@
       font-awesome  # Font
       git-lfs       # Git large file storage
       unrar         # rar uncompressor
-      onlyoffice-desktopeditors
       postman
       sl
       showmethekey

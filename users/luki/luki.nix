@@ -26,15 +26,12 @@
 
   # Mongodb
   services.mongodb.enable = true;
+  services.gvfs.enable = true;
 
   # Install firefox
   programs.firefox = {
     enable = true;
   };
-
-  # Disable some services
-  systemd.services."onlyoffice-converter".wantedBy = lib.mkForce [];
-  systemd.services."onlyoffice-docservice".wantedBy = lib.mkForce [];
 
   # Android emulator
   virtualisation.waydroid.enable = true;
