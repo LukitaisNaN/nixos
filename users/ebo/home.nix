@@ -59,7 +59,7 @@
 
       cat <<EOF
       Ahora se va a generar una clave que es necesaria para la nube.
-      Te va a pedir un par de cosas no hace falta que escribas nada, solo tocá enter.  
+      Te va a pedir un par de cosas no hace falta que escribas nada, solo tocá enter.
       EOF
 
       ssh-keygen
@@ -126,7 +126,7 @@
   };
 
   # Dont change even when updating.
-  home.stateVersion = "24.11"; 
+  home.stateVersion = "24.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -134,8 +134,8 @@
   # Esto es un toque de información necesaria para lo que sería nuestra "nube"
   programs.git = {
     enable = true;
-    userName = "Evo";
-    userEmail = "evoryplata2022@gmail.com";
+    user.name = "Evo";
+    user.email = "evoryplata2022@gmail.com";
   };
 
 }

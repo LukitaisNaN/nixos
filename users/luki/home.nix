@@ -15,8 +15,8 @@
 
     programs.git = {
       enable = true;
-      userName = "Lukita";
-      userEmail = "luca.irrazabal@mi.unc.edu.ar";
+      user.name = "Lukita";
+      user.email = "luca.irrazabal@mi.unc.edu.ar";
     };
 
     # home.packages allows you to install Nix packages into your environment.

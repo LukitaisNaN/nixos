@@ -132,7 +132,7 @@
   };
 
   # Dont change even when updating.
-  home.stateVersion = "24.11"; 
+  home.stateVersion = "24.11";
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
@@ -140,8 +140,8 @@
   # Esto es un toque de información necesaria para lo que sería nuestra "nube"
   programs.git = {
     enable = true;
-    userName = "Chuchu";
-    userEmail = "andreachinagonzalez@gmail.com";
+    user.name = "Chuchu";
+    user.email = "andreachinagonzalez@gmail.com";
   };
 
 }
