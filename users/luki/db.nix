@@ -5,5 +5,6 @@
     dbeaver-bin   # DB manager
     mongodb
     mongodb-tools
+    mongodb-compass
   ];
 }

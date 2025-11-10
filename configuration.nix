@@ -59,7 +59,6 @@
   #services.printing.enable = true;
 
   # Enable sound with pipewire.
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -103,6 +102,7 @@
     qalculate-qt            # Calculator
     wget
     unzip
+    zip
     zapzap                  # Whatsapp
   ];
 
@@ -110,7 +110,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts.agave
     nerd-fonts._0xproto
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.hurmit
   ];
 

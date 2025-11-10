@@ -134,8 +134,10 @@
   # Esto es un toque de información necesaria para lo que sería nuestra "nube"
   programs.git = {
     enable = true;
-    userName = "Evo";
-    userEmail = "evoryplata2022@gmail.com";
+    settings.user = {
+      name = "Evo";
+      email = "evoryplata2022@gmail.com";
+    };
   };
 
 }

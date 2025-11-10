@@ -74,8 +74,8 @@
   # Fonts
   fonts.packages = with pkgs; [
     nerd-fonts._0xproto
-    noto-fonts-emoji
     nerd-fonts.hurmit
+    noto-fonts-color-emoji
   ];
 
   # Enable the OpenSSH daemon.

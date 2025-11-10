@@ -26,6 +26,8 @@
 
   # Mongodb
   services.mongodb.enable = true;
+
+  # Detect devices (/dev)
   services.gvfs.enable = true;
 
   # Install firefox
@@ -36,6 +38,8 @@
   # Android emulator
   virtualisation.waydroid.enable = true;
   services.onlyoffice.enable = true;
+
+  powerManagement.cpuFreqGovernor = "performance";
 
   users.users.lukita = {
     isNormalUser = true;

@@ -12,11 +12,12 @@
 
     home.username = "lukita";
     home.homeDirectory = "/home/lukita";
-
     programs.git = {
       enable = true;
-      user.name = "Lukita";
-      user.email = "luca.irrazabal@mi.unc.edu.ar";
+      settings.user = {
+        name = "Lukita";
+        email = "luca.irrazabal@mi.unc.edu.ar";
+      };
     };
 
     # home.packages allows you to install Nix packages into your environment.
@@ -32,9 +33,12 @@
       jq            # Command Line json processor. Used in hypr/bin/smartcritty.sh
       lzip          # WayDroid_Script dependancy
       lsd           # Better ls
+      lsof
+      mame          # Emulator
       networkmanagerapplet
       toxic         # Lightweight Discord
       themix-gui    # Gtk customizer
+      tldr
       font-awesome  # Font
       git-lfs       # Git large file storage
       unrar         # rar uncompressor
